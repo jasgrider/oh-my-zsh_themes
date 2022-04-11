@@ -10,16 +10,18 @@ typeset +H my_orange="$FG[214]"
 
 
 # primary prompt
-PS1='$FG[237]---------------------------------------------------------------------------------%{$reset_color%}
-%{$fg_bold[red]%}➜ %{$fg_bold[green]%}%{$fg[cyan]%}%c %{$fg_bold[white]%}$(git_prompt_info)%{$fg_bold[white]%} 
-: %{$reset_color%}'
+ PS1='$my_gray---------------------------------------------------------------------------------%{$reset_color%}
+ %{$fg_bold[red]%}➜ %{$fg[green]%}[%{$fg_bold[red]%}%n%{$fg[green]%}@%m] %{$fg[cyan]%}%c
+ %{$fg_bold[white]%}$(git_prompt_info)%{$fg_bold[white]%}
+ : %{$reset_color%}'
 
 PS2='%{$fg[red]%}\ %{$reset_color%}'
 RPS1='${return_code}'
 
 # right prompt
 (( $+functions[virtualenv_prompt_info] )) && RPS1+='$(virtualenv_prompt_info)'
-RPS1+=' $my_gray%n@%m%{$reset_color%}%'
+# Cream-cicle
+RPS1+=' %{$fg_bold[white]%}{$my_orange%* %W%{$fg_bold[white]%}}%{$reset_color%}%'
 
 # git settings
 ZSH_THEME_GIT_PROMPT_PREFIX="(%{$fg[red]%}"
